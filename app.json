@@ -1,5 +1,15 @@
 {
-  "expo": {
-    "sdkVersion": "25.0.0"
+ "expo": {
+  "name": "Simple To Do",
+  "icon": "./icon.png",
+  "version": "0.1.0",
+  "slug": "simple-todo",
+  "sdkVersion": "25.0.0",
+  "ios": {
+    "bundleIdentifier": "com.sidharth.simpletodo"
+  },
+  "android": {
+    "package": "com.sidharth.simpletodo"
   }
+ }
 }
