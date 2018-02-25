@@ -15,6 +15,13 @@ export default class ToDo extends React.Component {
         <Text style = { styles.text }>
           { this.props.title }
         </Text>
+        <MaterialIcons
+          name = { 'clear' }
+          size = { 25 }
+          color = { 'grey' }
+          style = { styles.clear }
+          onPress = { () => { this.props.removeToDo(this.props.index) } }
+        />
       </View>
     );
   }
@@ -27,8 +34,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 10,
     backgroundColor: 'white',
+    elevation: 2,
   },
   text: {
     fontSize: 20,
+  },
+  clear: {
+    position: 'absolute',
+    right: 10,
+    top: 11
   }
 })

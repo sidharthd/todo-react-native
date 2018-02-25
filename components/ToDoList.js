@@ -55,6 +55,12 @@ export default class ToDoList extends React.Component {
     this.setState({ todos })
   }
 
+  removeToDo = index => {
+    let { todos } = this.state;
+    todos.splice(index, 1)
+    this.setState({ todos });
+  }
+
   render() {
     const todosToRender = this.state.todos.map(
       (todo, index) => (
@@ -64,6 +70,7 @@ export default class ToDoList extends React.Component {
           key = { index }
           pending = { todo.pending }
           toggleStatus = { this.toggleStatus }
+          removeToDo = { this.removeToDo }
         />
       )
     )
