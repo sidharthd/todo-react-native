@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { ScrollView, Text, FlatList } from 'react-native';
 
 import ToDo from './ToDo.js';
 
@@ -13,74 +13,64 @@ export default class ToDoList extends React.Component {
         {
           key: 0,
           todo: 'blah',
-          active: true,
+          pending: true,
         },
         {
           key: 1,
           todo: 'Learn React Native',
-          active: true,
+          pending: true,
         },
         {
           key: 2,
           todo: 'Develop a mobile app',
-          active: true,
+          pending: true,
         },
         {
           key: 3,
           todo: 'Learn Python',
-          active: true,
+          pending: true,
         },
         {
           key: 4,
           todo: 'to do',
-          active: true,
+          pending: true,
         },
         {
           key: 5,
           todo: 'another todo',
-          active: true,
+          pending: true,
         },
         {
           key: 6,
           todo: 'yet anotehr to do',
-          active: true,
-        },
-        {
-          key: 7,
-          todo: 'yet anotehr to do',
-          active: true,
+          pending: true,
         },
       ]
     }
   }
 
-  markAsDone = index => {
+  toggleStatus = index => {
     let { todos } = this.state;
-    todos[index].active = false;
+    todos[index].pending = !todos[index].pending;
     this.setState({ todos })
   }
 
-  renderToDo = ( {item, index} ) => {
-    if (item.active) {
-      return(
+  render() {
+    const todosToRender = this.state.todos.map(
+      (todo, index) => (
         <ToDo
-          title = { item.todo }
+          title = { todo.todo }
           index = { index }
-          markAsDone = { this.markAsDone }
+          key = { index }
+          pending = { todo.pending }
+          toggleStatus = { this.toggleStatus }
         />
       )
-    }
-  }
-
-  render() {
-    const { todos } = this.state;
+    )
     return(
-      <View>
-        <FlatList
-          data = { todos }
-          renderItem = { this.renderToDo  }
-        />
-      </View>
+      <ScrollView>
+        { todosToRender }
+      </ScrollView>
     );
   }
 }

@@ -7,10 +7,10 @@ export default class ToDo extends React.Component {
     return(
       <View style = { styles.container }>
         <MaterialIcons
-          name = { 'check-box-outline-blank' }
+          name = { this.props.pending? 'check-box-outline-blank' : 'check-box' }
+          color = { this.props.pending? 'grey' : 'green' }
           size = { 25 }
-          color = { 'grey' }
-          onPress = { () => { this.props.markAsDone(this.props.index) } }
+          onPress = { () => { this.props.toggleStatus(this.props.index) } }
         />
         <Text style = { styles.text }>
           { this.props.title }
