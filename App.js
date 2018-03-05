@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardAvoidingView, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { KeyboardAvoidingView, Text, StyleSheet, AsyncStorage, StatusBar } from 'react-native';
 
 import Header from './components/Header.js';
 import ToDoList from './components/ToDoList.js';
@@ -69,6 +69,9 @@ export default class App extends React.Component {
         style = { styles.container }
         behavior = { 'padding' }
       >
+        <StatusBar
+          barStyle = 'light-content'
+        />
         <Header />
         <ToDoList
           todos = { this.state.todos }
